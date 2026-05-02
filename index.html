@@ -8,15 +8,14 @@
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
 <!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com/3.4.17"></script>
 
 <!-- Icons -->
 <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <script>
 tailwind.config = {
@@ -36,7 +35,6 @@ body {font-family:'Plus Jakarta Sans', sans-serif;}
 .page{display:none}
 .page.active{display:block}
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;padding:10px 20px;border-radius:10px}
-.nav-item.active{color:#4ca1ff}
 </style>
 
 <!-- FIREBASE CONFIG -->
@@ -52,7 +50,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
-const db = firebase.firestore();
 </script>
 
 </head>
@@ -62,135 +59,115 @@ const db = firebase.firestore();
 <!-- LOGIN -->
 <div id="loginPage" class="h-screen flex items-center justify-center">
   <div class="bg-white p-6 rounded-xl shadow w-80 text-center">
+
     <h1 class="text-xl font-bold mb-4">DF Care</h1>
 
-    <button onclick="login('siswa')" class="w-full bg-blue-500 text-white py-2 rounded mb-2">
+    <button onclick="loginManual('siswa')" class="w-full bg-blue-500 text-white py-2 rounded mb-2">
       Masuk sebagai Siswa
     </button>
 
-    <button onclick="login('guru')" class="w-full bg-navy-500 text-white py-2 rounded mb-2">
+    <button onclick="loginManual('guru')" class="w-full bg-navy-500 text-white py-2 rounded mb-2">
       Masuk sebagai Guru
     </button>
 
     <button onclick="loginGoogle()" class="w-full bg-red-500 text-white py-2 rounded">
       Login dengan Google
     </button>
+
   </div>
 </div>
 
 <!-- APP -->
-<div id="mainApp" class="hidden h-full flex flex-col">
+<div id="mainApp" class="hidden p-4">
 
-<header class="bg-white p-3 flex justify-between">
-  <span id="roleLabel"></span>
-  <button onclick="logout()">Logout</button>
-</header>
+  <div class="flex justify-between mb-4">
+    <span id="roleLabel"></span>
+    <button onclick="logout()">Logout</button>
+  </div>
 
-<main class="flex-1 p-4">
-
-<!-- BERANDA -->
-<div id="pageBeranda" class="page active">
-  <h2 class="text-lg font-bold mb-2">Beranda</h2>
-  <p>Selamat datang di DF Care</p>
-</div>
-
-<!-- MATERI -->
-<div id="pageMateri" class="page">
-  <h2 class="font-bold mb-2">Materi</h2>
-  <div id="materiList"></div>
-</div>
-
-<!-- GAME -->
-<div id="pageGame" class="page">
-  <h2 class="font-bold mb-2">Game</h2>
-  <button onclick="truth()" class="bg-blue-100 p-2 rounded">Truth</button>
-  <button onclick="dare()" class="bg-orange-100 p-2 rounded">Dare</button>
-  <div id="gameResult" class="mt-3"></div>
-</div>
-
-</main>
-
-<nav class="flex justify-around bg-white p-2">
-  <button onclick="showPage('beranda')">Home</button>
-  <button onclick="showPage('materi')">Materi</button>
-  <button onclick="showPage('game')">Game</button>
-</nav>
+  <div id="pageBeranda" class="page active">
+    <h2 class="text-lg font-bold">Beranda</h2>
+    <p>Selamat datang di aplikasi BK Digital</p>
+  </div>
 
 </div>
 
 <script>
 
-// NAVIGATION
-function showPage(p){
-  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'))
-  document.getElementById('page'+capitalize(p)).classList.add('active')
-}
-function capitalize(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+// ==========================
+// STATE
+// ==========================
+let currentRole = '';
 
-// LOGIN
-function login(role){
-  enterApp(role)
+// ==========================
+// LOGIN MANUAL
+// ==========================
+function loginManual(role){
+  currentRole = role;
+
+  document.getElementById('loginPage').classList.add('hidden');
+  document.getElementById('mainApp').classList.remove('hidden');
+
+  document.getElementById('roleLabel').textContent = role;
 }
 
+// ==========================
 // LOGIN GOOGLE
+// ==========================
 function loginGoogle(){
   const provider = new firebase.auth.GoogleAuthProvider();
 
   auth.signInWithPopup(provider)
-  .then(res=>{
-    enterApp(res.user.displayName)
+  .then(result => {
+    const user = result.user;
+
+    currentRole = 'google';
+
+    document.getElementById('loginPage').classList.add('hidden');
+    document.getElementById('mainApp').classList.remove('hidden');
+
+    document.getElementById('roleLabel').textContent = user.displayName;
+
+    showToast("Login Google berhasil ✅");
   })
+  .catch(err => {
+    console.error(err);
+    showToast("Login gagal ❌");
+  });
 }
 
-// MASUK APP
-function enterApp(name){
-  document.getElementById('loginPage').classList.add('hidden')
-  document.getElementById('mainApp').classList.remove('hidden')
-  document.getElementById('roleLabel').textContent = name
-}
+// ==========================
+// AUTO LOGIN (SESSION)
+// ==========================
+auth.onAuthStateChanged(user => {
+  if(user){
+    document.getElementById('loginPage').classList.add('hidden');
+    document.getElementById('mainApp').classList.remove('hidden');
+    document.getElementById('roleLabel').textContent = user.displayName;
+  }
+});
 
+// ==========================
 // LOGOUT
+// ==========================
 function logout(){
-  auth.signOut()
-  location.reload()
+  auth.signOut();
+
+  document.getElementById('loginPage').classList.remove('hidden');
+  document.getElementById('mainApp').classList.add('hidden');
+
+  showToast("Logout berhasil");
 }
 
-// GAME
-const truths=[
-"Hal paling jujur yang sulit kamu katakan?",
-"Siapa orang yang paling kamu percaya?"
-]
-const dares=[
-"Puji teman kamu sekarang",
-"Ceritakan perasaan kamu hari ini"
-]
-
-function truth(){
-  document.getElementById('gameResult').innerText=
-  truths[Math.floor(Math.random()*truths.length)]
-}
-function dare(){
-  document.getElementById('gameResult').innerText=
-  dares[Math.floor(Math.random()*dares.length)]
-}
-
-// MATERI
-const materi=[
-"Keterbukaan",
-"Empati",
-"Sikap Positif"
-]
-
-document.getElementById('materiList').innerHTML=
-materi.map(m=>`<div class="bg-white p-2 mb-2 rounded">${m}</div>`).join('')
-
+// ==========================
 // TOAST
+// ==========================
 function showToast(msg){
-  const t=document.createElement('div')
-  t.className='toast'
-  t.innerText=msg
-  document.body.appendChild(t)
-  setTimeout(()=>t.remove(),3000)
+  const t = document.createElement('div');
+  t.className='toast';
+  t.textContent=msg;
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),3000);
 }
 
 </script>
