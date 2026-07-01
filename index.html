@@ -1,176 +1,1048 @@
 <!doctype html>
-<html lang="id" class="h-full">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DF Care and Connect</title>
+<html lang="id">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260701-05-1ec4861"}');</script><script src="/_sdk/f432b76fb310b513.telemetry_sdk.js" integrity="sha512-9FJQ55EKmmqhyyik8BhrMVfm0+iYYfb8uOlRsjtkxJMEI97qOVEI4PnHohDjQAtvAep0IOEpdQ64eki0sz62ug=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BK Digital Darul Falah</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+        *{font-family:'DM Sans',sans-serif}
+        .sidebar-item{transition:all .2s}
+        .sidebar-item:hover,.sidebar-item.active{background:rgba(99,102,241,.1);color:#6366f1}
+        .page{display:none}.page.active{display:block}
+        .modal-overlay{display:none}.modal-overlay.active{display:flex}
+        .card-hover{transition:transform .2s,box-shadow .2s}
+        .card-hover:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.1)}
+        .fade-in{animation:fadeIn .3s ease}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .toast{position:fixed;bottom:20px;right:20px;z-index:9999;transform:translateX(120%);transition:transform .3s}
+        .toast.show{transform:translateX(0)}
+        .spin-wheel{transition:transform 4s cubic-bezier(.17,.67,.12,.99)}
+        .coin-flip{animation:coinFlip 1s ease-in-out}
+        @keyframes coinFlip{0%{transform:rotateY(0)}50%{transform:rotateY(900deg)}100%{transform:rotateY(1800deg)}}
+        .sub-nav-btn{transition:all .2s}
+        .sub-nav-btn:hover,.sub-nav-btn.active{background:#6366f1;color:#fff}
+        .chart-bar{transition:height .5s ease}
+    </style>
+  <script src="/_sdk/0179d719c431a79e.data_sdk.js" type="text/javascript" integrity="sha512-OsRvJkI5GkC3MJQcgotQYotpzrMSX415GiKKgvYdxQEEkzD/fdchShO2FMSy0PJr/tiINMXOk5Vl2zAgg6bUiA=="></script>
+  <script src="/_sdk/0b3af1c300e720aa.resizing_sdk.js" type="text/javascript" integrity="sha512-nX1P6oXZmEY5wCI2lUVg3BwKu1cr0yi+ZpXgZ0Yn90vkSwvpmyzBMvOyD6VLJUtBwFI2dSrw1b6OvORxSggw3w=="></script>
+ </head>
+ <body data-template-id="__page-root" class="min-h-screen flex">
+  <aside data-template-id="sidebar-bg" class="canva-sidebar w-60 min-h-screen flex-shrink-0 border-r border-gray-200 flex flex-col overflow-y-auto">
+   <div class="p-4 border-b border-gray-200">
+    <h1 data-template-id="app-title" class="canva-text text-lg font-bold flex items-center gap-2"><i data-lucide="graduation-cap" class="w-5 h-5 text-indigo-600"></i></h1>
+   </div>
+   <nav class="flex-1 p-2 space-y-0.5" id="sidebar-nav"><button class="sidebar-item active w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="dashboard"><i data-lucide="layout-dashboard" class="w-4 h-4"></i> Dashboard</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="siswa"><i data-lucide="users" class="w-4 h-4"></i> Data Siswa</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="asesmen"><i data-lucide="clipboard-check" class="w-4 h-4"></i> Asesmen BK</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="dokumen"><i data-lucide="file-text" class="w-4 h-4"></i> Generator Dokumen</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="konseling"><i data-lucide="heart" class="w-4 h-4"></i> Konseling</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="homevisit"><i data-lucide="home" class="w-4 h-4"></i> Home Visit</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="game"><i data-lucide="gamepad-2" class="w-4 h-4"></i> Game BK</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="materi"><i data-lucide="book-open" class="w-4 h-4"></i> Materi BK</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="ai"><i data-lucide="bot" class="w-4 h-4"></i> AI Copilot</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="jadwal"><i data-lucide="calendar" class="w-4 h-4"></i> Jadwal</button> <button class="sidebar-item w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium" data-page="pengaturan"><i data-lucide="settings" class="w-4 h-4"></i> Pengaturan</button>
+   </nav>
+   <div class="p-3 border-t border-gray-200">
+    <div class="flex items-center gap-2">
+     <div class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center">
+      <i data-lucide="user" class="w-4 h-4 text-indigo-600"></i>
+     </div>
+     <div class="text-xs">
+      <p class="font-medium text-gray-800">Guru BK</p>
+      <p class="text-gray-500">Darul Falah</p>
+     </div>
+    </div>
+   </div>
+  </aside>
+  <div class="flex-1 flex flex-col min-h-screen overflow-hidden">
+   <header data-template-id="navbar-bg" class="canva-header h-14 border-b border-gray-200 flex items-center justify-between px-6 flex-shrink-0">
+    <div class="relative">
+     <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i><input type="text" placeholder="Cari..." class="pl-9 pr-4 py-1.5 bg-gray-100 rounded-lg text-sm w-56 focus:outline-none focus:ring-2 focus:ring-indigo-300">
+    </div><button class="p-2 rounded-lg hover:bg-gray-100 relative"><i data-lucide="bell" class="w-5 h-5 text-gray-600"></i><span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span></button>
+   </header>
+   <main class="flex-1 overflow-y-auto p-6 bg-gray-50" id="main-content"><!-- Dashboard -->
+    <div class="page active" id="page-dashboard">
+     <div class="fade-in">
+      <h2 data-template-id="dashboard-title" class="canva-text text-2xl font-bold text-gray-800 mb-6"></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+       <div data-template-id="stat-card-1" class="canva-card card-hover p-5 rounded-xl shadow-sm">
+        <div class="flex items-center justify-between">
+         <div>
+          <p class="text-sm text-gray-500">Total Siswa</p>
+          <p class="text-2xl font-bold text-gray-800 mt-1" id="stat-siswa">0</p>
+         </div>
+         <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+          <i data-lucide="users" class="w-6 h-6 text-blue-600"></i>
+         </div>
+        </div>
+       </div>
+       <div data-template-id="stat-card-2" class="canva-card card-hover p-5 rounded-xl shadow-sm">
+        <div class="flex items-center justify-between">
+         <div>
+          <p class="text-sm text-gray-500">Sesi Konseling</p>
+          <p class="text-2xl font-bold text-gray-800 mt-1" id="stat-konseling">0</p>
+         </div>
+         <div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center">
+          <i data-lucide="heart" class="w-6 h-6 text-purple-600"></i>
+         </div>
+        </div>
+       </div>
+       <div data-template-id="stat-card-3" class="canva-card card-hover p-5 rounded-xl shadow-sm">
+        <div class="flex items-center justify-between">
+         <div>
+          <p class="text-sm text-gray-500">Home Visit</p>
+          <p class="text-2xl font-bold text-gray-800 mt-1" id="stat-hv">0</p>
+         </div>
+         <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center">
+          <i data-lucide="home" class="w-6 h-6 text-yellow-600"></i>
+         </div>
+        </div>
+       </div>
+       <div data-template-id="stat-card-4" class="canva-card card-hover p-5 rounded-xl shadow-sm">
+        <div class="flex items-center justify-between">
+         <div>
+          <p class="text-sm text-gray-500">Dokumen</p>
+          <p class="text-2xl font-bold text-gray-800 mt-1" id="stat-doc">0</p>
+         </div>
+         <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+          <i data-lucide="file-text" class="w-6 h-6 text-green-600"></i>
+         </div>
+        </div>
+       </div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+       <div class="bg-white rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-800 mb-4">Aktivitas Terbaru</h3>
+        <div class="space-y-3" id="recent-activity">
+         <p class="text-sm text-gray-500 text-center py-4">Belum ada aktivitas</p>
+        </div>
+       </div>
+       <div class="bg-white rounded-xl p-5 shadow-sm">
+        <h3 class="font-semibold text-gray-800 mb-4">Jadwal Hari Ini</h3>
+        <div class="space-y-3" id="today-schedule">
+         <p class="text-sm text-gray-500 text-center py-4">Tidak ada jadwal</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Data Siswa -->
+    <div class="page" id="page-siswa">
+     <div class="fade-in">
+      <div class="flex items-center justify-between mb-6">
+       <h2 data-template-id="siswa-title" class="canva-text text-2xl font-bold text-gray-800"></h2><button onclick="openModal('modal-tambah-siswa')" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i> Tambah Siswa</button>
+      </div>
+      <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+       <div class="p-4 border-b flex flex-wrap gap-3 items-center">
+        <div class="relative flex-1 min-w-[200px]">
+         <i data-lucide="search" class="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i><input type="text" id="siswa-search" placeholder="Cari nama siswa..." class="w-full pl-9 pr-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300" oninput="App.filterSiswa()">
+        </div><select id="siswa-filter-kelas" class="border rounded-lg px-3 py-2 text-sm" onchange="App.filterSiswa()"><option value="">Semua Kelas</option><option value="X">Kelas X</option><option value="XI">Kelas XI</option><option value="XII">Kelas XII</option></select>
+       </div>
+       <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+         <thead class="bg-gray-50">
+          <tr>
+           <th class="text-left px-4 py-3 font-medium text-gray-600">No</th>
+           <th class="text-left px-4 py-3 font-medium text-gray-600">Nama</th>
+           <th class="text-left px-4 py-3 font-medium text-gray-600">NIS</th>
+           <th class="text-left px-4 py-3 font-medium text-gray-600">Kelas</th>
+           <th class="text-left px-4 py-3 font-medium text-gray-600">Aksi</th>
+          </tr>
+         </thead>
+         <tbody id="siswa-table-body"></tbody>
+        </table>
+       </div>
+       <div class="p-4 border-t">
+        <p class="text-sm text-gray-500" id="siswa-info"></p>
+       </div>
+      </div>
+     </div>
+    </div><!-- Asesmen BK -->
+    <div class="page" id="page-asesmen">
+     <div class="fade-in">
+      <h2 data-template-id="asesmen-title" class="canva-text text-2xl font-bold text-gray-800 mb-4"></h2>
+      <div class="flex flex-wrap gap-2 mb-6" id="asesmen-tabs"><button class="sub-nav-btn active px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-atab="menu">Menu</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-atab="akpd">AKPD</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-atab="dcm">DCM</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-atab="aum">AUM</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-atab="itp">ITP</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-atab="custom">Custom</button>
+      </div><!-- Asesmen Menu -->
+      <div id="asesmen-panel-menu" class="asesmen-panel">
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer" onclick="switchAsesmenTab('akpd')">
+         <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+          <i data-lucide="clipboard-list" class="w-5 h-5 text-blue-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">AKPD</h3>
+         <p class="text-xs text-gray-500 mt-1">Angket Kebutuhan Peserta Didik</p>
+        </div>
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer" onclick="switchAsesmenTab('dcm')">
+         <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+          <i data-lucide="list-checks" class="w-5 h-5 text-green-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">DCM</h3>
+         <p class="text-xs text-gray-500 mt-1">Daftar Cek Masalah</p>
+        </div>
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer" onclick="switchAsesmenTab('aum')">
+         <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+          <i data-lucide="file-question" class="w-5 h-5 text-purple-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">AUM</h3>
+         <p class="text-xs text-gray-500 mt-1">Alat Ungkap Masalah</p>
+        </div>
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer" onclick="switchAsesmenTab('itp')">
+         <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-3">
+          <i data-lucide="trending-up" class="w-5 h-5 text-yellow-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">ITP</h3>
+         <p class="text-xs text-gray-500 mt-1">Inventori Tugas Perkembangan</p>
+        </div>
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer" onclick="switchAsesmenTab('custom')">
+         <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-3">
+          <i data-lucide="edit-3" class="w-5 h-5 text-red-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">Asesmen Custom</h3>
+         <p class="text-xs text-gray-500 mt-1">Buat asesmen sendiri</p>
+        </div>
+       </div>
+      </div><!-- AKPD Panel -->
+      <div id="asesmen-panel-akpd" class="asesmen-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between mb-4">
+         <h3 class="font-semibold text-lg">AKPD - Angket Kebutuhan Peserta Didik</h3><button onclick="App.startAKPD()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">Mulai Asesmen</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">Instrumen untuk mengidentifikasi kebutuhan peserta didik dalam aspek pribadi, sosial, belajar, dan karier.</p>
+        <div id="akpd-content">
+         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="border rounded-lg p-4">
+           <h4 class="font-medium text-sm mb-2">Bidang Pribadi</h4>
+           <p class="text-xs text-gray-500">10 item pertanyaan</p>
+          </div>
+          <div class="border rounded-lg p-4">
+           <h4 class="font-medium text-sm mb-2">Bidang Sosial</h4>
+           <p class="text-xs text-gray-500">10 item pertanyaan</p>
+          </div>
+          <div class="border rounded-lg p-4">
+           <h4 class="font-medium text-sm mb-2">Bidang Belajar</h4>
+           <p class="text-xs text-gray-500">10 item pertanyaan</p>
+          </div>
+          <div class="border rounded-lg p-4">
+           <h4 class="font-medium text-sm mb-2">Bidang Karier</h4>
+           <p class="text-xs text-gray-500">10 item pertanyaan</p>
+          </div>
+         </div>
+        </div>
+        <div id="akpd-form" class="hidden"></div>
+        <div id="akpd-result" class="hidden"></div>
+       </div>
+      </div><!-- DCM Panel -->
+      <div id="asesmen-panel-dcm" class="asesmen-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between mb-4">
+         <h3 class="font-semibold text-lg">DCM - Daftar Cek Masalah</h3><button onclick="App.startDCM()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">Mulai Asesmen</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">Instrumen untuk mengidentifikasi masalah siswa dalam berbagai kategori.</p>
+        <div id="dcm-categories" class="grid grid-cols-2 md:grid-cols-5 gap-3"></div>
+        <div id="dcm-form" class="hidden mt-4"></div>
+        <div id="dcm-result" class="hidden mt-4"></div>
+       </div>
+      </div><!-- AUM Panel -->
+      <div id="asesmen-panel-aum" class="asesmen-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between mb-4">
+         <h3 class="font-semibold text-lg">AUM - Alat Ungkap Masalah</h3><button onclick="App.startAUM()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">Mulai Asesmen</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">Alat untuk mengungkap masalah siswa dengan format Ya/Tidak.</p>
+        <div id="aum-form" class="hidden"></div>
+        <div id="aum-result" class="hidden"></div>
+       </div>
+      </div><!-- ITP Panel -->
+      <div id="asesmen-panel-itp" class="asesmen-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6">
+        <div class="flex items-center justify-between mb-4">
+         <h3 class="font-semibold text-lg">ITP - Inventori Tugas Perkembangan</h3><button onclick="App.startITP()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">Mulai Asesmen</button>
+        </div>
+        <p class="text-sm text-gray-600 mb-4">Mengukur tingkat perkembangan siswa pada berbagai aspek.</p>
+        <div id="itp-form" class="hidden"></div>
+        <div id="itp-result" class="hidden"></div>
+       </div>
+      </div><!-- Custom Panel -->
+      <div id="asesmen-panel-custom" class="asesmen-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-4">Buat Asesmen Custom</h3>
+        <form id="form-custom-asesmen" class="space-y-4">
+         <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="ca-title">Judul Asesmen</label><input type="text" id="ca-title" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+         </div>
+         <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1" for="ca-instructions">Petunjuk</label><textarea id="ca-instructions" rows="2" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"></textarea>
+         </div>
+         <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Tipe Soal</label><select id="ca-type" class="w-full px-3 py-2 border rounded-lg text-sm"><option value="likert">Skala Likert</option><option value="yn">Ya/Tidak</option><option value="mc">Pilihan Ganda</option><option value="checkbox">Checkbox</option><option value="essay">Essay</option></select>
+         </div>
+         <div id="ca-questions-list" class="space-y-2"></div><button type="button" onclick="App.addCustomQuestion()" class="text-sm text-indigo-600 hover:underline flex items-center gap-1"><i data-lucide="plus" class="w-3 h-3"></i> Tambah Pertanyaan</button> <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">Simpan Asesmen</button>
+        </form>
+       </div>
+      </div>
+     </div>
+    </div><!-- Generator Dokumen -->
+    <div class="page" id="page-dokumen">
+     <div class="fade-in">
+      <h2 data-template-id="dokumen-title" class="canva-text text-2xl font-bold text-gray-800 mb-6"></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6" id="dokumen-grid"></div>
+      <div id="dokumen-preview" class="hidden bg-white rounded-xl shadow-sm p-6">
+       <div class="flex items-center justify-between mb-4">
+        <h3 class="font-semibold text-gray-800">Preview Dokumen</h3>
+        <div class="flex gap-2">
+         <button onclick="App.printDoc()" class="px-3 py-1.5 bg-gray-100 text-gray-700 rounded-lg text-sm hover:bg-gray-200 flex items-center gap-1"><i data-lucide="printer" class="w-4 h-4"></i> Print</button><button onclick="App.downloadDoc()" class="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-sm hover:bg-red-200 flex items-center gap-1"><i data-lucide="download" class="w-4 h-4"></i> Download</button>
+        </div>
+       </div>
+       <div id="dokumen-content" class="border rounded-lg p-6 min-h-[200px] text-sm leading-relaxed"></div>
+      </div>
+     </div>
+    </div><!-- Konseling -->
+    <div class="page" id="page-konseling">
+     <div class="fade-in">
+      <div class="flex items-center justify-between mb-6">
+       <h2 data-template-id="konseling-title" class="canva-text text-2xl font-bold text-gray-800"></h2><button onclick="openModal('modal-tambah-konseling')" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i> Tambah Sesi</button>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="konseling-list"></div>
+      <p id="konseling-empty" class="text-sm text-gray-500 text-center py-8">Belum ada sesi konseling</p>
+     </div>
+    </div><!-- Home Visit -->
+    <div class="page" id="page-homevisit">
+     <div class="fade-in">
+      <div class="flex items-center justify-between mb-6">
+       <h2 data-template-id="homevisit-title" class="canva-text text-2xl font-bold text-gray-800"></h2><button onclick="openModal('modal-tambah-homevisit')" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700 flex items-center gap-2"><i data-lucide="plus" class="w-4 h-4"></i> Tambah Kunjungan</button>
+      </div>
+      <div id="homevisit-list" class="bg-white rounded-xl shadow-sm overflow-hidden">
+       <p class="text-sm text-gray-500 text-center py-8">Belum ada data</p>
+      </div>
+     </div>
+    </div><!-- Game BK -->
+    <div class="page" id="page-game">
+     <div class="fade-in">
+      <h2 data-template-id="game-title" class="canva-text text-2xl font-bold text-gray-800 mb-4"></h2>
+      <div class="flex flex-wrap gap-2 mb-6" id="game-tabs"><button class="sub-nav-btn active px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-gtab="menu">Menu</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-gtab="tod">Truth or Dare</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-gtab="spin">Spin Wheel</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-gtab="picker">Random Picker</button> <button class="sub-nav-btn px-4 py-2 rounded-lg text-sm font-medium bg-gray-100" data-gtab="quiz">Quiz BK</button>
+      </div><!-- Game Menu -->
+      <div id="game-panel-menu" class="game-panel">
+       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer text-center" onclick="switchGameTab('tod')">
+         <div class="w-12 h-12 bg-pink-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="dice-3" class="w-6 h-6 text-pink-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">Truth or Dare</h3>
+        </div>
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer text-center" onclick="switchGameTab('spin')">
+         <div class="w-12 h-12 bg-orange-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="loader" class="w-6 h-6 text-orange-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">Spin Wheel</h3>
+        </div>
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer text-center" onclick="switchGameTab('picker')">
+         <div class="w-12 h-12 bg-cyan-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="shuffle" class="w-6 h-6 text-cyan-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">Random Picker</h3>
+        </div>
+        <div class="card-hover bg-white p-5 rounded-xl shadow-sm cursor-pointer text-center" onclick="switchGameTab('quiz')">
+         <div class="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-3">
+          <i data-lucide="help-circle" class="w-6 h-6 text-emerald-600"></i>
+         </div>
+         <h3 class="font-semibold text-gray-800">Quiz BK</h3>
+        </div>
+       </div>
+      </div><!-- Truth or Dare -->
+      <div id="game-panel-tod" class="game-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+        <div id="tod-coin" class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center text-white text-xl font-bold mb-6 cursor-pointer shadow-lg" onclick="App.flipCoin()">
+         FLIP
+        </div>
+        <p id="tod-result" class="text-2xl font-bold text-gray-800 mb-4"></p>
+        <p id="tod-question" class="text-lg text-gray-600 mb-6"></p><button onclick="App.flipCoin()" class="px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700">Putar Lagi</button>
+       </div>
+      </div><!-- Spin Wheel -->
+      <div id="game-panel-spin" class="game-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+        <div class="relative inline-block mb-6">
+         <canvas id="spin-canvas" width="300" height="300"></canvas>
+         <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2 w-0 h-0 border-l-[10px] border-r-[10px] border-t-[20px] border-l-transparent border-r-transparent border-t-red-500"></div>
+        </div>
+        <p id="spin-result" class="text-xl font-bold text-gray-800 mb-4"></p><button onclick="App.spinWheel()" class="px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700">Putar!</button>
+       </div>
+      </div><!-- Random Picker -->
+      <div id="game-panel-picker" class="game-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6 text-center">
+        <div id="picker-display" class="w-48 h-48 mx-auto rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white text-lg font-bold mb-6 shadow-lg">
+         ?
+        </div><button onclick="App.pickRandom()" class="px-6 py-3 bg-indigo-600 text-white rounded-xl font-medium hover:bg-indigo-700">Pilih Siswa</button>
+       </div>
+      </div><!-- Quiz -->
+      <div id="game-panel-quiz" class="game-panel hidden">
+       <div class="bg-white rounded-xl shadow-sm p-6">
+        <h3 class="font-semibold text-lg mb-4">Quiz BK</h3>
+        <div id="quiz-area"><button onclick="App.startQuiz()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm hover:bg-indigo-700">Mulai Quiz</button>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div><!-- Materi BK -->
+    <div class="page" id="page-materi">
+     <div class="fade-in">
+      <h2 data-template-id="materi-title" class="canva-text text-2xl font-bold text-gray-800 mb-6"></h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="materi-grid"></div>
+      <div id="materi-detail" class="hidden bg-white rounded-xl shadow-sm p-6 mt-4"></div>
+     </div>
+    </div><!-- AI Copilot -->
+    <div class="page" id="page-ai">
+     <div class="fade-in">
+      <h2 data-template-id="ai-title" class="canva-text text-2xl font-bold text-gray-800 mb-4"></h2>
+      <div class="bg-white rounded-xl shadow-sm flex flex-col" style="height:calc(70 * min(var(--vh,1vh),1vh))">
+       <div class="flex-1 overflow-y-auto p-5 space-y-4" id="ai-chat">
+        <div class="flex gap-3">
+         <div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0">
+          <i data-lucide="bot" class="w-4 h-4 text-indigo-600"></i>
+         </div>
+         <div class="bg-gray-100 rounded-lg p-3 max-w-md">
+          <p class="text-sm">Halo! Saya AI Copilot BK. Saya bisa membantu membuat RPL, materi, surat, evaluasi, soal asesmen, dan lainnya. Apa yang bisa saya bantu?</p>
+         </div>
+        </div>
+       </div>
+       <div class="border-t p-4">
+        <form id="ai-form" class="flex gap-3">
+         <input type="text" id="ai-input" placeholder="Ketik perintah... (misal: buatkan RPL tentang bullying)" class="flex-1 px-4 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"><button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700"><i data-lucide="send" class="w-4 h-4"></i></button>
+        </form>
+       </div>
+      </div>
+     </div>
+    </div><!-- Jadwal -->
+    <div class="page" id="page-jadwal">
+     <div class="fade-in">
+      <h2 data-template-id="jadwal-title" class="canva-text text-2xl font-bold text-gray-800 mb-6"></h2>
+      <div class="bg-white rounded-xl shadow-sm p-5">
+       <div class="flex items-center justify-between mb-4">
+        <button onclick="App.changeMonth(-1)" class="p-2 hover:bg-gray-100 rounded-lg"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+        <h3 class="font-semibold text-gray-800" id="calendar-month"></h3><button onclick="App.changeMonth(1)" class="p-2 hover:bg-gray-100 rounded-lg"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+       </div>
+       <div class="grid grid-cols-7 gap-1 text-center text-xs">
+        <div class="py-2 font-medium text-gray-500">
+         Min
+        </div>
+        <div class="py-2 font-medium text-gray-500">
+         Sen
+        </div>
+        <div class="py-2 font-medium text-gray-500">
+         Sel
+        </div>
+        <div class="py-2 font-medium text-gray-500">
+         Rab
+        </div>
+        <div class="py-2 font-medium text-gray-500">
+         Kam
+        </div>
+        <div class="py-2 font-medium text-gray-500">
+         Jum
+        </div>
+        <div class="py-2 font-medium text-gray-500">
+         Sab
+        </div>
+       </div>
+       <div class="grid grid-cols-7 gap-1 text-center text-sm" id="calendar-grid"></div>
+      </div>
+     </div>
+    </div><!-- Pengaturan -->
+    <div class="page" id="page-pengaturan">
+     <div class="fade-in">
+      <h2 data-template-id="pengaturan-title" class="canva-text text-2xl font-bold text-gray-800 mb-6"></h2>
+      <div class="bg-white rounded-xl shadow-sm p-6 max-w-2xl">
+       <h3 class="font-semibold text-gray-800 mb-4">Profil Guru BK</h3>
+       <form id="form-pengaturan" class="space-y-4">
+        <div>
+         <label class="block text-sm font-medium text-gray-700 mb-1" for="s-name">Nama</label><input type="text" id="s-name" value="Guru BK Darul Falah" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+        </div>
+        <div>
+         <label class="block text-sm font-medium text-gray-700 mb-1" for="s-school">Sekolah</label><input type="text" id="s-school" value="MA Darul Falah" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+        </div>
+        <div>
+    <label>Kop Surat (JPG/PNG)</label>
+    <input type="file" id="kop-surat" accept="image/*">
+</div>
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<div>
+    <label>Tanda Tangan Guru BK</label>
+    <input type="file" id="ttd-guru" accept="image/*">
+</div>
 
-<!-- Tailwind -->
-<script src="https://cdn.tailwindcss.com/3.4.17"></script>
+<div>
+    <label>Tanda Tangan Kepala Sekolah</label>
+    <input type="file" id="ttd-kepsek" accept="image/*">
+</div>
+        <div>
+         <label class="block text-sm font-medium text-gray-700 mb-1" for="s-email">Email</label><input type="email" id="s-email" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+        </div><button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">Simpan</button>
+       </form>
+      </div>
+     </div>
+    </div>
+   </main>
+  </div><!-- Modal Tambah Siswa -->
+  <div class="modal-overlay fixed inset-0 bg-black/50 z-50 items-center justify-center p-4" id="modal-tambah-siswa">
+   <div class="bg-white rounded-xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto">
+    <div class="flex items-center justify-between mb-4">
+     <h3 class="font-semibold text-lg">Tambah Siswa</h3><button onclick="closeModal('modal-tambah-siswa')" class="p-1 hover:bg-gray-100 rounded"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <form id="form-tambah-siswa" class="space-y-3">
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="siswa-nama">Nama</label><input type="text" id="siswa-nama" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="siswa-nis">NIS</label><input type="text" id="siswa-nis" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="siswa-kelas">Kelas</label><select id="siswa-kelas" required class="w-full px-3 py-2 border rounded-lg text-sm"><option value="">Pilih</option><option>X IPA 1</option><option>X IPA 2</option><option>XI IPA 1</option><option>XI IPS 1</option><option>XII IPA 1</option><option>XII IPS 1</option></select>
+     </div>
+     <div class="flex gap-3 pt-2">
+      <button type="submit" class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">Simpan</button><button type="button" onclick="closeModal('modal-tambah-siswa')" class="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200">Batal</button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Modal Tambah Konseling -->
+  <div class="modal-overlay fixed inset-0 bg-black/50 z-50 items-center justify-center p-4" id="modal-tambah-konseling">
+   <div class="bg-white rounded-xl w-full max-w-md p-6">
+    <div class="flex items-center justify-between mb-4">
+     <h3 class="font-semibold text-lg">Tambah Sesi Konseling</h3><button onclick="closeModal('modal-tambah-konseling')" class="p-1 hover:bg-gray-100 rounded"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <form id="form-tambah-konseling" class="space-y-3">
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="k-siswa">Nama Siswa</label><input type="text" id="k-siswa" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="k-tipe">Tipe</label><select id="k-tipe" class="w-full px-3 py-2 border rounded-lg text-sm"><option>Individual</option><option>Kelompok</option><option>Klasikal</option></select>
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="k-masalah">Permasalahan</label><textarea id="k-masalah" rows="3" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"></textarea>
+     </div>
+     <div class="flex gap-3 pt-2">
+      <button type="submit" class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">Simpan</button><button type="button" onclick="closeModal('modal-tambah-konseling')" class="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200">Batal</button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Modal Tambah Home Visit -->
+  <div class="modal-overlay fixed inset-0 bg-black/50 z-50 items-center justify-center p-4" id="modal-tambah-homevisit">
+   <div class="bg-white rounded-xl w-full max-w-md p-6">
+    <div class="flex items-center justify-between mb-4">
+     <h3 class="font-semibold text-lg">Tambah Home Visit</h3><button onclick="closeModal('modal-tambah-homevisit')" class="p-1 hover:bg-gray-100 rounded"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <form id="form-tambah-homevisit" class="space-y-3">
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="hv-siswa">Nama Siswa</label><input type="text" id="hv-siswa" required class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="hv-tanggal">Tanggal</label><input type="date" id="hv-tanggal" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300">
+     </div>
+     <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1" for="hv-alasan">Alasan</label><textarea id="hv-alasan" rows="2" class="w-full px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"></textarea>
+     </div>
+     <div class="flex gap-3 pt-2">
+      <button type="submit" class="flex-1 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm font-medium hover:bg-indigo-700">Simpan</button><button type="button" onclick="closeModal('modal-tambah-homevisit')" class="flex-1 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-gray-200">Batal</button>
+     </div>
+    </form>
+   </div>
+  </div><!-- Toast -->
+  <div id="toast" class="toast bg-gray-800 text-white px-4 py-3 rounded-lg shadow-lg text-sm flex items-center gap-2">
+   <i data-lucide="check-circle" class="w-4 h-4 text-green-400"></i><span id="toast-message"></span>
+  </div>
+  <script src="/_sdk/a57e1ce6823cfcdc.editing_sdk.js" integrity="sha512-kNK9Lfxs3JxWT717gHDYE+wlveaAj/VZXdy7sZdJAoa7Ps3DhgunLxr4od2Pr1ZqeSpJV2bST0X2ZhdP0AnInQ=="></script>
+  <script>
+    (function(){
+        'use strict';
 
-<!-- Icons -->
-<script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+        // ===== STATE =====
+        const state = {
+            siswa: [
+                {nama:'Ahmad Fauzi',nis:'12001',kelas:'XII IPA 1'},
+                {nama:'Rina Melati',nis:'12002',kelas:'XII IPA 2'},
+                {nama:'Budi Santoso',nis:'11003',kelas:'XI IPS 1'},
+                {nama:'Dewi Lestari',nis:'11004',kelas:'XI IPA 1'},
+                {nama:'Andi Pratama',nis:'10005',kelas:'X IPA 1'},
+                {nama:'Sari Wulandari',nis:'10006',kelas:'X IPA 2'},
+            ],
+            konseling: [],
+            homevisit: [],
+            docCount: 0
+        };
 
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+        // ===== UTILITIES =====
+        function showToast(msg){
+            const t=document.getElementById('toast'),m=document.getElementById('toast-message');
+            m.textContent=msg;t.classList.add('show');
+            setTimeout(()=>t.classList.remove('show'),3000);
+        }
+        window.showToast=showToast;
 
-<script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        navy: {500:'#1e3a5f'},
-        accent: {DEFAULT:'#4ca1ff'}
-      }
+        function openModal(id){const m=document.getElementById(id);if(m){m.classList.add('active');try{lucide.createIcons()}catch(e){}}}
+        function closeModal(id){const m=document.getElementById(id);if(m)m.classList.remove('active')}
+        window.openModal=openModal;window.closeModal=closeModal;
+
+        document.querySelectorAll('.modal-overlay').forEach(m=>{
+            m.addEventListener('click',function(e){if(e.target===this)this.classList.remove('active')});
+        });
+
+        // ===== NAVIGATION =====
+        function showPage(pageId){
+            document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+            document.querySelectorAll('#sidebar-nav .sidebar-item').forEach(s=>s.classList.remove('active'));
+            const page=document.getElementById('page-'+pageId);
+            if(page)page.classList.add('active');
+            const btn=document.querySelector(`[data-page="${pageId}"]`);
+            if(btn)btn.classList.add('active');
+            try{lucide.createIcons()}catch(e){}
+        }
+        document.getElementById('sidebar-nav').addEventListener('click',function(e){
+            const btn=e.target.closest('[data-page]');
+            if(btn)showPage(btn.dataset.page);
+        });
+
+        // ===== ASESMEN TABS =====
+        document.getElementById('asesmen-tabs').addEventListener('click',function(e){
+            const btn=e.target.closest('[data-atab]');
+            if(btn)switchAsesmenTab(btn.dataset.atab);
+        });
+        window.switchAsesmenTab=function(tab){
+            document.querySelectorAll('#asesmen-tabs .sub-nav-btn').forEach(b=>b.classList.remove('active'));
+            const btn=document.querySelector(`[data-atab="${tab}"]`);if(btn)btn.classList.add('active');
+            document.querySelectorAll('.asesmen-panel').forEach(p=>p.classList.add('hidden'));
+            const panel=document.getElementById('asesmen-panel-'+tab);if(panel)panel.classList.remove('hidden');
+            try{lucide.createIcons()}catch(e){}
+        };
+
+        // ===== GAME TABS =====
+        document.getElementById('game-tabs').addEventListener('click',function(e){
+            const btn=e.target.closest('[data-gtab]');
+            if(btn)switchGameTab(btn.dataset.gtab);
+        });
+        window.switchGameTab=function(tab){
+            document.querySelectorAll('#game-tabs .sub-nav-btn').forEach(b=>b.classList.remove('active'));
+            const btn=document.querySelector(`[data-gtab="${tab}"]`);if(btn)btn.classList.add('active');
+            document.querySelectorAll('.game-panel').forEach(p=>p.classList.add('hidden'));
+            const panel=document.getElementById('game-panel-'+tab);if(panel)panel.classList.remove('hidden');
+            if(tab==='spin')App.drawWheel();
+            try{lucide.createIcons()}catch(e){}
+        };
+
+        // ===== SISWA =====
+        function renderSiswa(){
+            const search=(document.getElementById('siswa-search').value||'').toLowerCase();
+            const kelas=document.getElementById('siswa-filter-kelas').value;
+            const filtered=state.siswa.filter(s=>{
+                const ms=s.nama.toLowerCase().includes(search)||s.nis.includes(search);
+                const mk=!kelas||s.kelas.startsWith(kelas);
+                return ms&&mk;
+            });
+            const tbody=document.getElementById('siswa-table-body');
+            tbody.innerHTML=filtered.map((s,i)=>`<tr class="border-t hover:bg-gray-50"><td class="px-4 py-3">${i+1}</td><td class="px-4 py-3 font-medium">${s.nama}</td><td class="px-4 py-3">${s.nis}</td><td class="px-4 py-3">${s.kelas}</td><td class="px-4 py-3"><button onclick="App.deleteSiswa(${state.siswa.indexOf(s)})" class="text-xs text-red-600 hover:underline">Hapus</button></td></tr>`).join('');
+            document.getElementById('siswa-info').textContent=`${filtered.length} siswa`;
+            document.getElementById('stat-siswa').textContent=state.siswa.length;
+        }
+
+        document.getElementById('form-tambah-siswa').addEventListener('submit',function(e){
+            e.preventDefault();
+            const nama=document.getElementById('siswa-nama').value.trim();
+            const nis=document.getElementById('siswa-nis').value.trim();
+            const kelas=document.getElementById('siswa-kelas').value;
+            if(nama&&nis&&kelas){state.siswa.push({nama,nis,kelas});renderSiswa();closeModal('modal-tambah-siswa');this.reset();showToast('Siswa ditambahkan');}
+        });
+
+        // ===== KONSELING =====
+        function renderKonseling(){
+            const list=document.getElementById('konseling-list');
+            const empty=document.getElementById('konseling-empty');
+            if(!state.konseling.length){list.innerHTML='';empty.classList.remove('hidden');return;}
+            empty.classList.add('hidden');
+            list.innerHTML=state.konseling.map((k,i)=>`<div class="bg-white p-5 rounded-xl shadow-sm border-l-4 border-indigo-500"><div class="flex items-center justify-between mb-2"><span class="text-xs bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded">${k.tipe}</span><button onclick="App.deleteKonseling(${i})" class="text-xs text-red-500 hover:underline">Hapus</button></div><h4 class="font-semibold text-gray-800">${k.siswa}</h4><p class="text-xs text-gray-500 mt-1">${k.masalah}</p></div>`).join('');
+            document.getElementById('stat-konseling').textContent=state.konseling.length;
+        }
+        document.getElementById('form-tambah-konseling').addEventListener('submit',function(e){
+            e.preventDefault();
+            state.konseling.push({siswa:document.getElementById('k-siswa').value,tipe:document.getElementById('k-tipe').value,masalah:document.getElementById('k-masalah').value});
+            renderKonseling();closeModal('modal-tambah-konseling');this.reset();showToast('Sesi ditambahkan');
+        });
+
+        // ===== HOME VISIT =====
+        function renderHomevisit(){
+            const list=document.getElementById('homevisit-list');
+            if(!state.homevisit.length){list.innerHTML='<p class="text-sm text-gray-500 text-center py-8">Belum ada data</p>';return;}
+            list.innerHTML='<table class="w-full text-sm"><thead class="bg-gray-50"><tr><th class="text-left px-4 py-3 font-medium text-gray-600">Tanggal</th><th class="text-left px-4 py-3 font-medium text-gray-600">Siswa</th><th class="text-left px-4 py-3 font-medium text-gray-600">Alasan</th><th class="px-4 py-3"></th></tr></thead><tbody>'+state.homevisit.map((h,i)=>`<tr class="border-t"><td class="px-4 py-3">${h.tanggal}</td><td class="px-4 py-3 font-medium">${h.siswa}</td><td class="px-4 py-3 text-gray-500">${h.alasan}</td><td class="px-4 py-3"><button onclick="App.deleteHV(${i})" class="text-xs text-red-600 hover:underline">Hapus</button></td></tr>`).join('')+'</tbody></table>';
+            document.getElementById('stat-hv').textContent=state.homevisit.length;
+        }
+        document.getElementById('form-tambah-homevisit').addEventListener('submit',function(e){
+            e.preventDefault();
+            state.homevisit.push({siswa:document.getElementById('hv-siswa').value,tanggal:document.getElementById('hv-tanggal').value,alasan:document.getElementById('hv-alasan').value});
+            renderHomevisit();closeModal('modal-tambah-homevisit');this.reset();showToast('Home visit ditambahkan');
+        });
+
+        // ===== DOKUMEN =====
+        const dokTypes=[
+            {id:'rpl',name:'RPL BK',icon:'book',color:'indigo'},
+            {id:'surat-panggilan',name:'Surat Panggilan Orang Tua',icon:'mail',color:'red'},
+            {id:'laporan-konseling',name:'Laporan Konseling',icon:'file-text',color:'blue'},
+            {id:'satlan',name:'SATLAN',icon:'clipboard',color:'green'},
+            {id:'satkung',name:'SATKUNG',icon:'clipboard',color:'purple'},
+            {id:'homevisit',name:'Laporan Home Visit',icon:'home',color:'yellow'},
+            {id:'program-tahunan',name:'Program Tahunan',icon:'calendar',color:'cyan'},
+            {id:'program-semester',name:'Program Semester',icon:'calendar',color:'teal'},
+            {id:'surat-perjanjian',name:'Surat Perjanjian',icon:'file-check',color:'orange'},
+        ];
+        
+        function renderDokumen(){
+            document.getElementById('dokumen-grid').innerHTML=dokTypes.map(d=>`<button onclick="App.generateDoc('${d.id}')" class="card-hover bg-white p-5 rounded-xl shadow-sm text-left hover:border-indigo-300 border border-transparent"><div class="w-10 h-10 bg-${d.color}-100 rounded-lg flex items-center justify-center mb-3"><i data-lucide="${d.icon}" class="w-5 h-5 text-${d.color}-600"></i></div><h3 class="font-semibold text-gray-800 text-sm">${d.name}</h3></button>`).join('');
+            try{lucide.createIcons()}catch(e){}
+        }
+
+        // ===== GAME: TRUTH OR DARE =====
+        const truths=['Ceritakan pengalaman paling membanggakan di sekolah','Apa ketakutan terbesarmu?','Siapa guru favoritmu dan mengapa?','Apa cita-citamu 10 tahun lagi?','Ceritakan momen paling memalukan di kelas'];
+        const dares=['Nyanyikan lagu kesukaanmu di depan kelas','Beri pujian untuk 3 teman di sekitarmu','Tirukan gaya guru favoritmu','Sebutkan 5 hal positif tentang dirimu','Ajak satu teman untuk berdansa 10 detik'];
+
+        // ===== GAME: SPIN WHEEL =====
+        const wheelItems=['Pribadi','Sosial','Belajar','Karier','Kesehatan','Keluarga'];
+        const wheelColors=['#6366f1','#ec4899','#f59e0b','#10b981','#3b82f6','#8b5cf6'];
+        let spinning=false;
+
+        // ===== GAME: QUIZ =====
+        const quizQuestions=[
+            {q:'Apa yang dimaksud dengan bullying?',options:['Kekerasan fisik saja','Tindakan menyakiti yang berulang','Candaan biasa','Perkelahian'],answer:1},
+            {q:'Cara mengelola stres yang baik adalah...',options:['Memendam perasaan','Olahraga dan meditasi','Menyalahkan orang lain','Tidur seharian'],answer:1},
+            {q:'Empati adalah kemampuan untuk...',options:['Memerintah orang lain','Memahami perasaan orang lain','Mengabaikan masalah','Berbicara keras'],answer:1},
+        ];
+
+        // ===== MATERI BK =====
+        const materiList=[
+            {
+    title: 'Komunikasi Interpersonal',
+    desc: 'Pelajari cara membangun komunikasi yang efektif dengan orang lain.',
+    link: 'https://ghafalasifa.github.io/DF-CARE-CONNECT/'
+},
+            {title:'Bullying',desc:'Memahami dan mencegah perundungan'},
+            {title:'Cyberbullying',desc:'Perundungan di dunia maya'},
+            {title:'Kepercayaan Diri',desc:'Membangun kepercayaan diri'},
+            {title:'Manajemen Emosi',desc:'Mengelola emosi dengan baik'},
+            {title:'Perencanaan Karier',desc:'Merencanakan masa depan'},
+            {title:'Motivasi Belajar',desc:'Meningkatkan semangat belajar'},
+            {title:'Kesehatan Mental',desc:'Menjaga kesehatan mental'},
+            {title:'Public Speaking',desc:'Berbicara di depan umum'},
+            {title:'Manajemen Stres',desc:'Mengelola tekanan'},
+            {title:'Literasi Digital',desc:'Bijak menggunakan teknologi'},
+            {title:'Growth Mindset',desc:'Pola pikir bertumbuh'},
+            {title:'Time Management',desc:'Mengelola waktu efektif'},
+        ];
+        function renderMateri(){
+            document.getElementById('materi-grid').innerHTML =
+materiList.map((m,i)=>`
+<div class="card-hover bg-white p-5 rounded-xl shadow-sm">
+    <h3 class="font-semibold text-gray-800 text-sm">${m.title}</h3>
+    <p class="text-xs text-gray-500 mt-2">${m.desc}</p>
+
+    ${
+        m.link
+        ? `<a href="${m.link}"
+              target="_blank"
+              class="inline-block mt-3 text-indigo-600 hover:underline">
+              📖 Buka Materi
+           </a>`
+        : ''
     }
-  }
-}
-</script>
-
-<style>
-body {font-family:'Plus Jakarta Sans', sans-serif;}
-.page{display:none}
-.page.active{display:block}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e3a5f;color:#fff;padding:10px 20px;border-radius:10px}
-</style>
-
-<!-- FIREBASE CONFIG -->
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyBYB3TiXc4Nec6B47hsrEMey9ak4kLvA_A",
-  authDomain: "df-care.firebaseapp.com",
-  projectId: "df-care",
-  storageBucket: "df-care.firebasestorage.app",
-  messagingSenderId: "58040438574",
-  appId: "1:58040438574:web:e5be03307f898c014634bf"
-};
-
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-</script>
-
-</head>
-
-<body class="bg-gray-100">
-
-<!-- LOGIN -->
-<div id="loginPage" class="h-screen flex items-center justify-center">
-  <div class="bg-white p-6 rounded-xl shadow w-80 text-center">
-
-    <h1 class="text-xl font-bold mb-4">DF Care</h1>
-
-    <button onclick="loginManual('siswa')" class="w-full bg-blue-500 text-white py-2 rounded mb-2">
-      Masuk sebagai Siswa
-    </button>
-
-    <button onclick="loginManual('guru')" class="w-full bg-navy-500 text-white py-2 rounded mb-2">
-      Masuk sebagai Guru
-    </button>
-
-    <button onclick="loginGoogle()" class="w-full bg-red-500 text-white py-2 rounded">
-      Login dengan Google
-    </button>
-
-  </div>
 </div>
+`).join('');
+        }
 
-<!-- APP -->
-<div id="mainApp" class="hidden p-4">
+        // ===== CALENDAR =====
+        let calDate=new Date(2026,5,1);
+        const months=['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
+        function renderCalendar(){
+            const grid=document.getElementById('calendar-grid');
+            const mEl=document.getElementById('calendar-month');
+            if(!grid||!mEl)return;
+            mEl.textContent=months[calDate.getMonth()]+' '+calDate.getFullYear();
+            const y=calDate.getFullYear(),mo=calDate.getMonth();
+            const first=new Date(y,mo,1).getDay();
+            const days=new Date(y,mo+1,0).getDate();
+            let html='';
+            for(let i=0;i<first;i++)html+='<div class="py-2"></div>';
+            const today=new Date();
+            for(let d=1;d<=days;d++){
+                const isToday=d===today.getDate()&&mo===today.getMonth()&&y===today.getFullYear();
+                html+=`<div class="py-2 rounded-lg cursor-pointer hover:bg-indigo-50 ${isToday?'bg-indigo-600 text-white hover:bg-indigo-700':''}">${d}</div>`;
+            }
+            grid.innerHTML=html;
+        }
 
-  <div class="flex justify-between mb-4">
-    <span id="roleLabel"></span>
-    <button onclick="logout()">Logout</button>
-  </div>
+        // ===== AI CHAT =====
+        const aiTemplates={
+            rpl:'<strong>RPL Bimbingan Klasikal</strong><br>Topik: Pencegahan Bullying<br>Waktu: 2x45 menit<br>Tujuan: Siswa mampu memahami bentuk-bentuk bullying dan cara mengatasinya.<br>Metode: Diskusi, role play, refleksi.<br>Media: Video, PPT, LKPD.',
+            materi:'<strong>Materi: Manajemen Emosi</strong><br>Tujuan: Siswa mampu mengenali dan mengelola emosi.<br>Kegiatan: Ice breaking → Penyampaian materi → Diskusi kelompok → Refleksi.',
+            surat:'<strong>Surat Panggilan Orang Tua</strong><br>Nomor: .../BK/VI/2026<br>Kepada Yth. Bapak/Ibu...<br>Dengan hormat, kami mengharapkan kehadiran...',
+            default:'Baik, saya siap membantu. Berikut beberapa hal yang bisa saya bantu:<br>• Buatkan RPL<br>• Buatkan materi<br>• Buatkan surat<br>• Buatkan soal asesmen<br>• Analisis data siswa'
+        };
+        document.getElementById('ai-form').addEventListener('submit',function(e){
+            e.preventDefault();
+            const input=document.getElementById('ai-input');
+            const msg=input.value.trim();if(!msg)return;
+            const chat=document.getElementById('ai-chat');
+            chat.innerHTML+=`<div class="flex gap-3 justify-end"><div class="bg-indigo-600 text-white rounded-lg p-3 max-w-md"><p class="text-sm">${msg}</p></div></div>`;
+            input.value='';
+            setTimeout(()=>{
+                let resp=aiTemplates.default;
+                const lower=msg.toLowerCase();
+                if(lower.includes('rpl'))resp=aiTemplates.rpl;
+                else if(lower.includes('materi'))resp=aiTemplates.materi;
+                else if(lower.includes('surat'))resp=aiTemplates.surat;
+                chat.innerHTML+=`<div class="flex gap-3"><div class="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center flex-shrink-0"><i data-lucide="bot" class="w-4 h-4 text-indigo-600"></i></div><div class="bg-gray-100 rounded-lg p-3 max-w-md"><p class="text-sm">${resp}</p></div></div>`;
+                chat.scrollTop=chat.scrollHeight;
+                try{lucide.createIcons()}catch(e){}
+            },600);
+            chat.scrollTop=chat.scrollHeight;
+        });
 
-  <div id="pageBeranda" class="page active">
-    <h2 class="text-lg font-bold">Beranda</h2>
-    <p>Selamat datang di aplikasi BK Digital</p>
-  </div>
+        // ===== ASESMEN INSTRUMENTS =====
+        const akpdItems={
+            pribadi:['Saya merasa percaya diri','Saya mampu mengendalikan emosi','Saya memahami kelebihan diri','Saya mampu mengambil keputusan','Saya memiliki tujuan hidup yang jelas'],
+            sosial:['Saya mudah bergaul','Saya mampu bekerja dalam tim','Saya menghargai pendapat orang lain','Saya mampu menyelesaikan konflik','Saya memiliki empati yang baik'],
+            belajar:['Saya memiliki motivasi belajar tinggi','Saya mampu mengatur waktu belajar','Saya memahami gaya belajar saya','Saya aktif bertanya di kelas','Saya mampu berkonsentrasi saat belajar'],
+            karier:['Saya sudah memiliki rencana karier','Saya mengetahui minat saya','Saya memahami dunia kerja','Saya siap melanjutkan pendidikan','Saya mengetahui potensi diri']
+        };
+        const dcmCategories=['Pribadi','Sosial','Belajar','Karier','Kesehatan','Ekonomi','Keluarga','Agama','Hubungan Teman','Hubungan Orang Tua'];
+        const dcmItems={
+            'Pribadi':['Sering merasa minder','Mudah cemas','Sulit mengendalikan emosi','Sering merasa kesepian','Kurang percaya diri'],
+            'Sosial':['Sulit bergaul','Sering bertengkar','Merasa dikucilkan','Sulit beradaptasi','Kurang assertif'],
+            'Belajar':['Malas belajar','Sulit konsentrasi','Nilai menurun','Tidak suka PR','Sering bolos'],
+            'Karier':['Bingung pilih jurusan','Tidak tahu bakat','Tidak punya cita-cita','Takut masa depan','Kurang informasi karier'],
+            'Kesehatan':['Sering sakit','Kurang tidur','Malas olahraga','Pola makan buruk','Sering pusing'],
+            'Ekonomi':['Kekurangan uang saku','Tidak bisa beli buku','Harus bekerja sambilan','Merasa malu','Tidak bisa ikut kegiatan'],
+            'Keluarga':['Orang tua sering bertengkar','Kurang perhatian','Orang tua bercerai','Tekanan dari keluarga','Tidak harmonis'],
+            'Agama':['Malas beribadah','Kurang yakin','Lingkungan kurang mendukung','Sulit istiqomah','Merasa berdosa'],
+            'Hubungan Teman':['Sering diledek','Tidak punya teman dekat','Bertengkar dengan teman','Merasa iri','Di-bully'],
+            'Hubungan Orang Tua':['Sulit berkomunikasi','Merasa tidak dipahami','Sering dimarahi','Terlalu dikekang','Kurang kasih sayang']
+        };
 
-</div>
+        // ===== DCM RENDER =====
+        function renderDCMCategories(){
+            document.getElementById('dcm-categories').innerHTML=dcmCategories.map(c=>`<div class="border rounded-lg p-3 text-center cursor-pointer hover:bg-indigo-50 hover:border-indigo-300"><p class="text-xs font-medium">${c}</p><p class="text-xs text-gray-500">${(dcmItems[c]||[]).length} item</p></div>`).join('');
+        }
 
-<script>
+        // ===== CUSTOM ASESMEN =====
+        let customQuestions=[];
+        document.getElementById('form-custom-asesmen').addEventListener('submit',function(e){
+            e.preventDefault();
+            showToast('Asesmen custom berhasil disimpan!');
+            customQuestions=[];
+            document.getElementById('ca-questions-list').innerHTML='';
+            this.reset();
+        });
 
-// ==========================
-// STATE
-// ==========================
-let currentRole = '';
+        // ===== APP METHODS =====
+        window.App={
+            filterSiswa:renderSiswa,
+            deleteSiswa(i){state.siswa.splice(i,1);renderSiswa();showToast('Siswa dihapus');},
+            deleteKonseling(i){state.konseling.splice(i,1);renderKonseling();showToast('Sesi dihapus');},
+            deleteHV(i){state.homevisit.splice(i,1);renderHomevisit();showToast('Data dihapus');},
+            changeMonth(dir){calDate.setMonth(calDate.getMonth()+dir);renderCalendar();},
+            generateDoc(type){
+                const preview=document.getElementById('dokumen-preview');
+                const content=document.getElementById('dokumen-content');
+                preview.classList.remove('hidden');
+                const d=dokTypes.find(t=>t.id===type);
+                content.innerHTML=`<div class="text-center mb-4"><h2 class="text-lg font-bold">MA DARUL FALAH</h2><hr class="mt-2 border-2"></div><p class="text-center font-bold mb-4">${d?d.name:'DOKUMEN'}</p><p class="mb-2">Nomor: .../BK/VI/2026</p><p class="mb-4">Dokumen ini digenerate secara otomatis oleh sistem BK Digital Darul Falah.</p><p class="text-gray-500 text-xs">[Isi dokumen akan disesuaikan dengan data yang diinput]</p><div class="mt-8 text-right"><p>Guru BK</p><p class="mt-8 font-medium">____________________</p></div>`;
+                state.docCount++;document.getElementById('stat-doc').textContent=state.docCount;
+                showToast('Dokumen digenerate');
+                try{lucide.createIcons()}catch(e){}
+            },
+            printDoc(){
+                const content=document.getElementById('dokumen-content').innerHTML;
+                const w=window.open('','_blank');
+                if(w){w.document.write('<html><head><title>Print</title><style>body{font-family:serif;padding:40px;font-size:14px;line-height:1.6}</style></head><body>'+content+'</body></html>');w.document.close();w.print();}
+            },
+            downloadDoc(){
+                const content=document.getElementById('dokumen-content').innerText;
+                const blob=new Blob([content],{type:'text/plain'});
+                const url=URL.createObjectURL(blob);
+                const a=document.createElement('a');a.href=url;a.download='dokumen.txt';a.click();
+                URL.revokeObjectURL(url);showToast('Dokumen diunduh');
+            },
+            flipCoin(){
+                const coin=document.getElementById('tod-coin');
+                const resultEl=document.getElementById('tod-result');
+                const qEl=document.getElementById('tod-question');
+                coin.style.animation='none';
+                void coin.offsetWidth;
+                coin.style.animation='coinFlip 1s ease-in-out';
+                setTimeout(()=>{
+                    const isTruth=Math.random()>0.5;
+                    resultEl.textContent=isTruth?'🤔 TRUTH':'🎯 DARE';
+                    const list=isTruth?truths:dares;
+                    qEl.textContent=list[Math.floor(Math.random()*list.length)];
+                },1000);
+            },
+            drawWheel(){
+                const canvas=document.getElementById('spin-canvas');
+                if(!canvas)return;
+                const ctx=canvas.getContext('2d');
+                const cx=150,cy=150,r=140;
+                const arc=2*Math.PI/wheelItems.length;
+                ctx.clearRect(0,0,300,300);
+                wheelItems.forEach((item,i)=>{
+                    ctx.beginPath();ctx.moveTo(cx,cy);
+                    ctx.arc(cx,cy,r,i*arc,(i+1)*arc);
+                    ctx.fillStyle=wheelColors[i%wheelColors.length];
+                    ctx.fill();ctx.stroke();
+                    ctx.save();ctx.translate(cx,cy);ctx.rotate(i*arc+arc/2);
+                    ctx.fillStyle='#fff';ctx.font='bold 12px DM Sans';
+                    ctx.fillText(item,50,4);ctx.restore();
+                });
+            },
+            spinWheel(){
+                if(spinning)return;spinning=true;
+                const canvas=document.getElementById('spin-canvas');
+                const deg=Math.floor(1800+Math.random()*1800);
+                canvas.style.transition='transform 4s cubic-bezier(.17,.67,.12,.99)';
+                canvas.style.transform=`rotate(${deg}deg)`;
+                setTimeout(()=>{
+                    const idx=Math.floor((360-(deg%360))/(360/wheelItems.length))%wheelItems.length;
+                    document.getElementById('spin-result').textContent='Hasil: '+wheelItems[idx];
+                    spinning=false;
+                },4100);
+            },
+            pickRandom(){
+                if(!state.siswa.length){showToast('Tambahkan siswa terlebih dahulu');return;}
+                const display=document.getElementById('picker-display');
+                let count=0;
+                const interval=setInterval(()=>{
+                    display.textContent=state.siswa[Math.floor(Math.random()*state.siswa.length)].nama;
+                    count++;
+                    if(count>15){clearInterval(interval);display.style.transform='scale(1.1)';setTimeout(()=>display.style.transform='',300);}
+                },100);
+            },
+            startQuiz(){
+                const area=document.getElementById('quiz-area');
+                let current=0,score=0;
+                function renderQ(){
+                    if(current>=quizQuestions.length){
+                        area.innerHTML=`<div class="text-center p-6"><h3 class="text-2xl font-bold text-indigo-600">Skor: ${score}/${quizQuestions.length}</h3><p class="mt-2 text-gray-600">Quiz selesai!</p><button onclick="App.startQuiz()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Ulangi</button></div>`;
+                        return;
+                    }
+                    const q=quizQuestions[current];
+                    area.innerHTML=`<p class="font-medium mb-4">${current+1}. ${q.q}</p><div class="space-y-2">${q.options.map((o,i)=>`<button onclick="App.answerQuiz(${i})" class="w-full text-left px-4 py-3 border rounded-lg hover:bg-indigo-50 hover:border-indigo-300 text-sm">${o}</button>`).join('')}</div>`;
+                }
+                window.App.answerQuiz=function(i){if(i===quizQuestions[current].answer)score++;current++;renderQ();};
+                renderQ();
+            },
+            startAKPD(){
+                const form=document.getElementById('akpd-form');
+                const content=document.getElementById('akpd-content');
+                const result=document.getElementById('akpd-result');
+                content.classList.add('hidden');result.classList.add('hidden');form.classList.remove('hidden');
+                let html='<p class="text-sm text-gray-600 mb-4">Pilih skala 1-4 (1=Sangat Tidak Sesuai, 4=Sangat Sesuai)</p>';
+                let idx=0;
+                Object.entries(akpdItems).forEach(([cat,items])=>{
+                    html+=`<h4 class="font-medium mt-4 mb-2 capitalize">${cat}</h4>`;
+                    items.forEach(item=>{
+                        html+=`<div class="flex items-center justify-between py-2 border-b"><span class="text-sm">${item}</span><div class="flex gap-2">${[1,2,3,4].map(v=>`<label class="cursor-pointer"><input type="radio" name="akpd-${idx}" value="${v}" class="akpd-radio"> <span class="text-xs">${v}</span></label>`).join('')}</div></div>`;
+                        idx++;
+                    });
+                });
+                html+=`<button onclick="App.submitAKPD()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Lihat Hasil</button>`;
+                form.innerHTML=html;
+            },
+            submitAKPD(){
+                const radios=document.querySelectorAll('.akpd-radio:checked');
+                const scores={pribadi:0,sosial:0,belajar:0,karier:0};
+                const cats=Object.keys(akpdItems);
+                let idx=0;
+                cats.forEach(cat=>{
+                    akpdItems[cat].forEach(()=>{
+                        const r=document.querySelector(`input[name="akpd-${idx}"]:checked`);
+                        if(r)scores[cat]+=parseInt(r.value);
+                        idx++;
+                    });
+                });
+                const result=document.getElementById('akpd-result');
+                const form=document.getElementById('akpd-form');
+                form.classList.add('hidden');result.classList.remove('hidden');
+                const maxPerCat=20;
+                result.innerHTML=`<h4 class="font-semibold mb-4">Hasil AKPD</h4><div class="space-y-3">${cats.map(c=>{const pct=Math.round(scores[c]/maxPerCat*100);return`<div><div class="flex justify-between text-sm mb-1"><span class="capitalize">${c}</span><span>${scores[c]}/${maxPerCat} (${pct}%)</span></div><div class="w-full bg-gray-200 rounded-full h-3"><div class="bg-indigo-600 h-3 rounded-full" style="width:${pct}%"></div></div></div>`;}).join('')}</div><p class="mt-4 text-sm text-gray-600">Kategori dengan skor rendah menunjukkan kebutuhan layanan BK yang lebih tinggi.</p>`;
+            },
+            startDCM(){
+                const form=document.getElementById('dcm-form');
+                const result=document.getElementById('dcm-result');
+                result.classList.add('hidden');form.classList.remove('hidden');
+                let html='<p class="text-sm text-gray-600 mb-4">Centang masalah yang kamu alami:</p>';
+                dcmCategories.forEach(cat=>{
+                    html+=`<h4 class="font-medium mt-4 mb-2">${cat}</h4>`;
+                    (dcmItems[cat]||[]).forEach((item,i)=>{
+                        html+=`<label class="flex items-center gap-2 py-1 text-sm cursor-pointer"><input type="checkbox" class="dcm-check" data-cat="${cat}"> ${item}</label>`;
+                    });
+                });
+                html+=`<button onclick="App.submitDCM()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Lihat Hasil</button>`;
+                form.innerHTML=html;
+            },
+            submitDCM(){
+                const checks=document.querySelectorAll('.dcm-check:checked');
+                const counts={};
+                dcmCategories.forEach(c=>counts[c]=0);
+                checks.forEach(ch=>counts[ch.dataset.cat]++);
+                const result=document.getElementById('dcm-result');
+                const form=document.getElementById('dcm-form');
+                form.classList.add('hidden');result.classList.remove('hidden');
+                result.innerHTML=`<h4 class="font-semibold mb-4">Hasil DCM</h4><div class="space-y-2">${dcmCategories.map(c=>{const max=(dcmItems[c]||[]).length;const pct=max?Math.round(counts[c]/max*100):0;return`<div><div class="flex justify-between text-sm mb-1"><span>${c}</span><span>${counts[c]}/${max}</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="${pct>60?'bg-red-500':pct>30?'bg-yellow-500':'bg-green-500'} h-2 rounded-full" style="width:${pct}%"></div></div></div>`;}).join('')}</div><p class="mt-4 text-sm text-gray-600"><strong>Rekomendasi:</strong> Fokus layanan BK pada kategori dengan persentase tinggi (>60%).</p>`;
+            },
+            startAUM(){
+                const form=document.getElementById('aum-form');
+                const result=document.getElementById('aum-result');
+                result.classList.add('hidden');form.classList.remove('hidden');
+                const aumItems=['Saya sering merasa cemas tanpa sebab','Saya sulit tidur di malam hari','Saya merasa tidak dimengerti','Saya sering bertengkar dengan teman','Saya bingung memilih jurusan','Saya merasa malas sekolah','Saya sering merasa sedih','Saya sulit fokus belajar'];
+                form.innerHTML=`<p class="text-sm text-gray-600 mb-4">Jawab Ya/Tidak:</p>${aumItems.map((item,i)=>`<div class="flex items-center justify-between py-2 border-b"><span class="text-sm">${item}</span><div class="flex gap-3"><label class="text-sm cursor-pointer"><input type="radio" name="aum-${i}" value="1" class="aum-radio"> Ya</label><label class="text-sm cursor-pointer"><input type="radio" name="aum-${i}" value="0" class="aum-radio"> Tidak</label></div></div>`).join('')}<button onclick="App.submitAUM()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Lihat Hasil</button>`;
+            },
+            submitAUM(){
+                const radios=document.querySelectorAll('.aum-radio:checked');
+                let total=0;radios.forEach(r=>total+=parseInt(r.value));
+                const result=document.getElementById('aum-result');
+                document.getElementById('aum-form').classList.add('hidden');result.classList.remove('hidden');
+                const pct=Math.round(total/8*100);
+                const level=pct>75?'Tinggi':pct>50?'Sedang':pct>25?'Rendah':'Sangat Rendah';
+                result.innerHTML=`<h4 class="font-semibold mb-4">Hasil AUM</h4><p class="text-sm">Skor: ${total}/8 (${pct}%)</p><p class="text-sm mt-2">Tingkat Masalah: <strong class="${pct>50?'text-red-600':'text-green-600'}">${level}</strong></p><div class="mt-4 w-full bg-gray-200 rounded-full h-4"><div class="${pct>75?'bg-red-500':pct>50?'bg-yellow-500':'bg-green-500'} h-4 rounded-full" style="width:${pct}%"></div></div>`;
+            },
+            startITP(){
+                const form=document.getElementById('itp-form');
+                const result=document.getElementById('itp-result');
+                result.classList.add('hidden');form.classList.remove('hidden');
+                const aspects=['Landasan hidup religius','Landasan perilaku etis','Kematangan emosi','Kematangan intelektual','Kesadaran tanggung jawab','Peran sosial','Kemandirian perilaku'];
+                form.innerHTML=`<p class="text-sm text-gray-600 mb-4">Pilih tingkat perkembangan (1-4):</p>${aspects.map((a,i)=>`<div class="flex items-center justify-between py-2 border-b"><span class="text-sm">${a}</span><div class="flex gap-2">${[1,2,3,4].map(v=>`<label class="cursor-pointer"><input type="radio" name="itp-${i}" value="${v}" class="itp-radio"> <span class="text-xs">${v}</span></label>`).join('')}</div></div>`).join('')}<button onclick="App.submitITP()" class="mt-4 px-4 py-2 bg-indigo-600 text-white rounded-lg text-sm">Lihat Hasil</button>`;
+            },
+            submitITP(){
+                const aspects=['Landasan hidup religius','Landasan perilaku etis','Kematangan emosi','Kematangan intelektual','Kesadaran tanggung jawab','Peran sosial','Kemandirian perilaku'];
+                let scores=[];
+                aspects.forEach((_,i)=>{const r=document.querySelector(`input[name="itp-${i}"]:checked`);scores.push(r?parseInt(r.value):0);});
+                const result=document.getElementById('itp-result');
+                document.getElementById('itp-form').classList.add('hidden');result.classList.remove('hidden');
+                result.innerHTML=`<h4 class="font-semibold mb-4">Hasil ITP</h4><div class="space-y-2">${aspects.map((a,i)=>`<div><div class="flex justify-between text-sm mb-1"><span>${a}</span><span>${scores[i]}/4</span></div><div class="w-full bg-gray-200 rounded-full h-2"><div class="bg-indigo-600 h-2 rounded-full" style="width:${scores[i]*25}%"></div></div></div>`).join('')}</div><p class="mt-4 text-sm text-gray-600">Aspek dengan skor rendah memerlukan intervensi layanan BK.</p>`;
+            },
+            addCustomQuestion(){
+                const list=document.getElementById('ca-questions-list');
+                const idx=list.children.length;
+                const div=document.createElement('div');
+                div.className='flex gap-2 items-center';
+                div.innerHTML=`<input type="text" placeholder="Pertanyaan ${idx+1}" class="flex-1 px-3 py-2 border rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-300"><button type="button" onclick="this.parentElement.remove()" class="text-red-500 text-xs hover:underline">Hapus</button>`;
+                list.appendChild(div);
+            },
+            showMateri(i){
+                const m=materiList[i];
+                const detail=document.getElementById('materi-detail');
+                detail.classList.remove('hidden');
+                detail.innerHTML=`<div class="flex items-center justify-between mb-4"><h3 class="font-semibold text-lg">${m.title}</h3><button onclick="document.getElementById('materi-detail').classList.add('hidden')" class="text-gray-500 hover:text-gray-700"><i data-lucide="x" class="w-5 h-5"></i></button></div><p class="text-sm text-gray-600 mb-3">${m.desc}</p><div class="grid grid-cols-2 gap-3 text-sm"><div class="border rounded-lg p-3"><strong>Tujuan:</strong><p class="text-gray-600 mt-1">Siswa memahami konsep ${m.title.toLowerCase()} dan mampu menerapkannya.</p></div><div class="border rounded-lg p-3"><strong>Kompetensi:</strong><p class="text-gray-600 mt-1">Pemahaman, analisis, dan penerapan.</p></div><div class="border rounded-lg p-3"><strong>Langkah Kegiatan:</strong><p class="text-gray-600 mt-1">1. Ice breaking<br>2. Penyampaian materi<br>3. Diskusi<br>4. Refleksi</p></div><div class="border rounded-lg p-3"><strong>Evaluasi:</strong><p class="text-gray-600 mt-1">Lembar kerja siswa dan refleksi tertulis.</p></div></div>`;
+                try{lucide.createIcons()}catch(e){}
+            }
+        };
 
-// ==========================
-// LOGIN MANUAL
-// ==========================
-function loginManual(role){
-  currentRole = role;
+        // ===== FORM: PENGATURAN =====
+        document.getElementById('form-pengaturan').addEventListener('submit',function(e){e.preventDefault();showToast('Pengaturan disimpan');});
 
-  document.getElementById('loginPage').classList.add('hidden');
-  document.getElementById('mainApp').classList.remove('hidden');
-
-  document.getElementById('roleLabel').textContent = role;
-}
-
-// ==========================
-// LOGIN GOOGLE
-// ==========================
-function loginGoogle(){
-  const provider = new firebase.auth.GoogleAuthProvider();
-
-  auth.signInWithPopup(provider)
-  .then(result => {
-    const user = result.user;
-
-    currentRole = 'google';
-
-    document.getElementById('loginPage').classList.add('hidden');
-    document.getElementById('mainApp').classList.remove('hidden');
-
-    document.getElementById('roleLabel').textContent = user.displayName;
-
-    showToast("Login Google berhasil ✅");
-  })
-  .catch(err => {
-    console.error(err);
-    showToast("Login gagal ❌");
-  });
-}
-
-// ==========================
-// AUTO LOGIN (SESSION)
-// ==========================
-auth.onAuthStateChanged(user => {
-  if(user){
-    document.getElementById('loginPage').classList.add('hidden');
-    document.getElementById('mainApp').classList.remove('hidden');
-    document.getElementById('roleLabel').textContent = user.displayName;
-  }
-});
-
-// ==========================
-// LOGOUT
-// ==========================
-function logout(){
-  auth.signOut();
-
-  document.getElementById('loginPage').classList.remove('hidden');
-  document.getElementById('mainApp').classList.add('hidden');
-
-  showToast("Logout berhasil");
-}
-
-// ==========================
-// TOAST
-// ==========================
-function showToast(msg){
-  const t = document.createElement('div');
-  t.className='toast';
-  t.textContent=msg;
-  document.body.appendChild(t);
-  setTimeout(()=>t.remove(),3000);
-}
-
-</script>
-
-</body>
+        // ===== INIT =====
+        renderSiswa();
+        renderCalendar();
+        renderDokumen();
+        renderMateri();
+        renderDCMCategories();
+        document.getElementById('stat-siswa').textContent=state.siswa.length;
+        try{lucide.createIcons()}catch(e){}
+    })();
+    </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a1454f25c5a50fad',t:'MTc4MjkwNzg0My4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
